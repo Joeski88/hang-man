@@ -1,6 +1,60 @@
 import random
 from words import words
 
+def print_hangman(wrong):
+    if(wrong == 1):
+        print("\n+----+")
+    elif(wrong == 2):
+        print("\n+----+")
+        print("       |")
+        print("       |")
+        print("       |")
+    elif(wrong == 3):
+        print("\n+----+")
+        print("       |")
+        print("       |")
+        print("       |")
+        print("  ======")
+    elif(wrong == 4):
+        print("\n+----+")
+        print("  O    |")
+        print("       |")
+        print("       |")
+        print("  ======")
+    elif(wrong == 5):
+        print("\n+----+")
+        print("  O    |")
+        print("  |    |")
+        print("       |")
+        print("  ======")
+    elif(wrong == 6):
+        print("\n+----+")
+        print("  O    |")
+        print(" /|    |")
+        print("       |")
+        print("  ======")
+    elif(wrong == 7):
+        print("\n+----+")
+        print("  O    |")
+        print(" /|\   |")
+        print("       |")
+        print("  ======")
+    elif(wrong == 8):
+        print("\n+----+")
+        print("  O    |")
+        print(" /|\   |")
+        print(" /     |")
+        print("  ======")
+    elif(wrong == 9):
+        print("\n+----+")
+        print("  O    |")
+        print(" /|\   |")
+        print(" / \   |")
+        print("  ======")
+
+
+
+
 print("Welcome to Hangman")
 print("------------------------------------")
 
