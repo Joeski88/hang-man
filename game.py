@@ -1,6 +1,16 @@
 import random
 from words import words
 
+TESTFLAG = False
+
+def testWord(randomWord, TESTFLAG):
+    if TESTFLAG == True:
+        print("WORD TO GUESS", randomWord)
+
+def testWrongGuess(total, TESTFLAG):
+    if TESTFLAG == True:        
+        print("Amountoftimewrong", total)
+
 def print_hangman(wrong):
     if(wrong == 1):
         print("\n+----+")
@@ -52,25 +62,106 @@ def print_hangman(wrong):
         print(" / \   |")
         print("  ======")
 
+def printWord(randomWord, guessedLetters):
+    counter=0
+    rightLetters=0
+    for char in randomWord:
+        if(char in guessedLetters):
+            print(randomWord[counter], end=' ')
+            rightLetters += 1 # ADDED - the main bug, it wasn't being updated so was always 0
+        else:
+            print(" ", end=" ")
+        counter += 1
+    return rightLetters
+
+def printLines(randomWord):
+    print("\r")
+    for char in randomWord:
+        print("\u203E", end=" ")
+
+def getWord():
+    #pick a random word from list
+    randomWord = random.choice(words)
+
+    testWord(randomWord, TESTFLAG)
+    return randomWord
 
 
+def run():
+    randomWord = getWord()
+    length_of_word_to_guess = len(randomWord)
 
-print("Welcome to Hangman")
-print("------------------------------------")
+    current_guess_index = 0
+    current_letters_guessed = []
+    current_letters_right = 0
+
+    amount_of_times_wrong = 0
+
+    for x in randomWord:
+        print("_", end=" ")
+
+    while(True):
+        ## ADDED
+        if amount_of_times_wrong >= 9:
+            print("\nGame Over!")
+            break
+        print("\nLetters guessed so far:\n ")
+        for letter in current_letters_guessed:
+            print(letter, end=" ")
+        ### ADDED
+        if current_letters_right >= length_of_word_to_guess:
+            print("\nYou won!")
+            break
+
+        ### prompt for user input
+        letterGuessed = input("\nGuess a letter: ")
+
+
+        ### User is right
+        for current_guess_index in range(length_of_word_to_guess):
+            if randomWord[current_guess_index] == letterGuessed:
+                current_letters_guessed.append(letterGuessed)
+
+                current_letters_right = printWord(randomWord, current_letters_guessed)
+                #print("Right", (randomWord[current_guess_index], current_guess_index, [current_letters_right]), length_of_word_to_guess, current_letters_right >= length_of_word_to_guess)
+                break            
+
+        ### User wrong
+        if (randomWord[current_guess_index] != letterGuessed):
+
+            if(current_letters_right < length_of_word_to_guess):
+                amount_of_times_wrong += 1
+
+                current_letters_guessed.append(letterGuessed)
+
+                ### Update drawing
+                print_hangman(amount_of_times_wrong)
+
+                ### Print word
+                current_letters_right = printWord(randomWord, current_letters_guessed)
+                testWrongGuess(amount_of_times_wrong, TESTFLAG)
+
+        printLines(randomWord)
+
+        #print([amount_of_times_wrong], current_letters_right, randomWord, (current_guess_index), letterGuessed, randomWord[current_guess_index] == letterGuessed)
+
+print("\n------------------------------------")
+print("\n      Welcome to Hangman!!!")
+print("\n------------------------------------")
 
 ### Start menu for user
 choice = ""
 
 while True:
-    print("1) Play Game")
+    print("\n1) Play Game")
     print("2) Rules")
-    print("3) Exit Game")
+    print("3) Exit Game\n")
 
-    choice = input("Menu Select: ")
+    choice = input("Menu Select: \n")
 
     choice = choice.strip()
     if (choice == "1"):
-            print("Let's Playyyyyyy!!!")
+            print("Let's Playyyyyyy!!!\n")
             run()
     elif (choice == "2"):
             print("1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!  \n------------------------------------------------------")
