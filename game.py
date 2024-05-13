@@ -86,7 +86,6 @@ def getWord():
     testWord(randomWord, TESTFLAG)
     return randomWord
 
-
 def run():
     randomWord = getWord()
     length_of_word_to_guess = len(randomWord)
@@ -115,7 +114,6 @@ def run():
 
         ### prompt for user input
         letterGuessed = input("\nGuess a letter: ")
-
 
         ### User is right
         for current_guess_index in range(length_of_word_to_guess):
@@ -155,7 +153,9 @@ choice = ""
 while True:
     print("\n1) Play Game")
     print("2) Rules")
-    print("3) Exit Game\n")
+    print("3) language Select Mode")
+    print("4) Multiplayer")
+    print("5) Exit Game\n")
 
     choice = input("Menu Select: \n")
 
@@ -165,7 +165,7 @@ while True:
             run()
     elif (choice == "2"):
             print("1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!  \n------------------------------------------------------")
-    elif(choice == "3"):
+    elif(choice == "5"):
             break
     else:
         print("Invalid Choice, Please Try Again.")
