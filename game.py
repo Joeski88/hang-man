@@ -1,3 +1,6 @@
+import random
+from words import words
+
 print("Welcome to Hangman")
 print("------------------------------------")
 
