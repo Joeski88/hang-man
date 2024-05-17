@@ -79,6 +79,7 @@ def printLines(randomWord):
     for char in randomWord:
         print("\u203E", end=" ")
 
+
 def getWord():
     #pick a random word from list
     randomWord = random.choice(words)
@@ -103,6 +104,9 @@ def run():
         ## ADDED
         if amount_of_times_wrong >= 9:
             print("\nGame Over!")
+            print("You guessed ")
+            print(randomWord)
+            printLines()
             break
         print("\nLetters guessed so far:\n ")
         for letter in current_letters_guessed:
