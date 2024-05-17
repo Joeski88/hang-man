@@ -143,9 +143,13 @@ def run():
 
         #print([amount_of_times_wrong], current_letters_right, randomWord, (current_guess_index), letterGuessed, randomWord[current_guess_index] == letterGuessed)
 
-print("\n------------------------------------")
-print("\n      Welcome to Hangman!!!")
-print("\n------------------------------------")
+print("\n----------------------------------------------------------------------------------")
+print("                   _   _    _    _   _  ____ __  __    _    _   _ ")
+print("                  | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | |")
+print("                  | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| |")
+print("                  |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |")
+print("                  |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_|") 
+print("\n----------------------------------------------------------------------------------")
 
 ### Start menu for user
 choice = ""
